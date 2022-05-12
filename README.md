@@ -18,5 +18,5 @@ MSA 환경에서 각 도메인 개발자들의 작업이 매번 필요한 Boiler
 	response.Error(&rest.BAD_REQUEST_ERROR, err.Error())
 
 #### CustomError
-	&rest.CustomError{CodeDesc: &rest.ACCESS_DENIED_ACCOUNT_DISABLE, Message: "정보보안 담장자에게 문의하세요."}
+	&rest.CustomError{CodeDesc: &rest.ACCESS_DENIED_ACCOUNT_DISABLE, Message: "담장자에게 문의하세요."}
 	
