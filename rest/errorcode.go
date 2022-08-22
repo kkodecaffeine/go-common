@@ -143,12 +143,6 @@ var NOT_FOUND_ERROR = CodeDescription{
 	Message:        "존재하지 않는 정보입니다.▸ ",
 }
 
-var TOO_MANY_REQUEST = CodeDescription{
-	HttpStatusCode: 429,
-	Code:           "TOO_MANY_REQUEST",
-	Message:        "주어진 시간동안 너무 많은 요청을 보냈습니다.",
-}
-
 var FAILED_DB_PROCESSING = CodeDescription{
 	HttpStatusCode: 500,
 	Code:           "FAILED_DB_PROCESSING",
