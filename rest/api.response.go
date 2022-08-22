@@ -34,7 +34,7 @@ func (res *ApiResponse) Succeed(message string, data interface{}) *ApiResponse {
 	return res
 }
 
-func (res *ApiResponse) Error(codeDesc *CodeDescription, message string) *ApiResponse {
+func (res *ApiResponse) Error(codeDesc *CodeDescription, message string, data interface{}) *ApiResponse {
 	const isSuccess = false
 	r := reflect.ValueOf(&FAILED_INTERNAL_ERROR)
 	errorCode := reflect.Indirect(r).FieldByName("Code")
@@ -49,6 +49,7 @@ func (res *ApiResponse) Error(codeDesc *CodeDescription, message string) *ApiRes
 	}
 
 	res.Success = isSuccess
+	res.Data = data
 
 	return res
 }

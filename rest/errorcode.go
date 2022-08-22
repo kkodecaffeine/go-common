@@ -10,6 +10,7 @@ type CustomError struct {
 	HttpStatusCode int
 	CodeDesc       *CodeDescription
 	Message        string
+	Data           interface{}
 }
 
 func (e *CustomError) Error() *CustomError {
@@ -70,31 +71,37 @@ var TOKEN_EXPIRED = CodeDescription{
 	Message:        "토큰이 만료되었습니다.",
 }
 
+var REFRESH_TOKEN_EXPIRED = CodeDescription{
+	HttpStatusCode: 400,
+	Code:           "REFRESH_TOKEN_EXPIRED",
+	Message:        "토큰이 만료되었습니다.",
+}
+
 var BAD_REQUEST = CodeDescription{
 	HttpStatusCode: 400,
 	Code:           "BAD_REQUEST",
 	Message:        "잘못된 요청입니다.▸ ",
 }
 
-var BAD_REQUEST_MISSING_PARAMETERS = CodeDescription{
+var MISSING_PARAMETERS = CodeDescription{
 	HttpStatusCode: 400,
 	Code:           "MISSING_PARAMETERS",
 	Message:        "필수 입력 정보가 부족합니다.▸ ",
 }
 
-var BAD_REQUEST_INVALID_PARAMETERS = CodeDescription{
+var INVALID_PARAMETERS = CodeDescription{
 	HttpStatusCode: 400,
 	Code:           "INVALID_PARAMETERS",
 	Message:        "입력 정보가 올바르지 않습니다.▸ ",
 }
 
-var BAD_REQUEST_NOT_REGISTERED_QRCODE = CodeDescription{
+var NOT_REGISTERED_QRCODE = CodeDescription{
 	HttpStatusCode: 400,
 	Code:           "NOT_REGISTERED_QRCODE",
 	Message:        "QR 코드가 등록되지 않았습니다.",
 }
 
-var BAD_REQUEST_INVALID_OTP = CodeDescription{
+var INVALID_OTP = CodeDescription{
 	HttpStatusCode: 400,
 	Code:           "INVALID_OTP",
 	Message:        "OTP 번호가 잘못되었거나 유효만료 시간을 초과했습니다.",
@@ -110,6 +117,12 @@ var ACCESS_DENIED_ACCOUNT_DISABLE = CodeDescription{
 	HttpStatusCode: 401,
 	Code:           "ACCESS_DENIED_ACCOUNT_DISABLE",
 	Message:        "계정 잠금 조치(비활성화)가 진행되었습니다. ",
+}
+
+var RESOLVE_REQUIRED_ACTIONS = CodeDescription{
+	HttpStatusCode: 401,
+	Code:           "RESOLVE_REQUIRED_ACTIONS",
+	Message:        "비밀번호를 재설정해주세요. 90일이 만료되었습니다.",
 }
 
 var AUTH_EMAIL_ALREADY_EXISTS = CodeDescription{

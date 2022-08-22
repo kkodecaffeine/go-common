@@ -12,6 +12,8 @@ import (
 
 /*
  * Extract token from header
+ *
+ * @author kkodecaffeine@gmail.com
  */
 func ExtractBearerToken(header string) (string, *rest.CustomError) {
 	if header == "" {
@@ -28,6 +30,8 @@ func ExtractBearerToken(header string) (string, *rest.CustomError) {
 
 /*
  * Extract values ("iss") from user claims. Then get secret key according to issuer type
+ *
+ * @author kkodecaffeine@gmail.com
  */
 func ExtractClaims(jwtToken string) (string, *rest.CustomError) {
 	token, _, err := new(jwt.Parser).ParseUnverified(jwtToken, jwt.MapClaims{})
@@ -87,13 +91,15 @@ func verifyToken(c *gin.Context, isBasic bool) (*jwt.Token, *rest.CustomError) {
 
 /*
  * Perform token validation of a regular account, or an administrator account
+ *
+ * @author kkodecaffeine@gmail.com
  */
 func TokenAuthMiddleware(c *gin.Context) {
 	response := rest.NewApiResponse()
 
 	bearerToken, err := ExtractBearerToken(c.GetHeader("Authorization"))
 	if err != nil {
-		response.Error(err.CodeDesc, err.Message)
+		response.Error(err.CodeDesc, err.Message, nil)
 		c.JSON(err.CodeDesc.HttpStatusCode, response)
 		c.Abort()
 		return
@@ -107,7 +113,7 @@ func TokenAuthMiddleware(c *gin.Context) {
 
 	token, err := verifyToken(c, isBasic)
 	if err != nil {
-		response.Error(err.CodeDesc, err.Message)
+		response.Error(err.CodeDesc, err.Message, nil)
 		c.JSON(err.CodeDesc.HttpStatusCode, response)
 		c.Abort()
 		return
@@ -115,7 +121,7 @@ func TokenAuthMiddleware(c *gin.Context) {
 
 	_, OK := token.Claims.(jwt.MapClaims)
 	if !OK {
-		response.Error(&rest.FAILED_INTERNAL_ERROR, "unable to parse claims")
+		response.Error(&rest.FAILED_INTERNAL_ERROR, "unable to parse claims", nil)
 		c.JSON(rest.FAILED_INTERNAL_ERROR.HttpStatusCode, response)
 		c.Abort()
 		return
