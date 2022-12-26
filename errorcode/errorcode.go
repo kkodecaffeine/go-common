@@ -1,26 +1,9 @@
-package rest
+package errorcode
 
 type CodeDescription struct {
 	HttpStatusCode int
 	Code           string
 	Message        string
-}
-
-type CustomError struct {
-	HttpStatusCode int
-	CodeDesc       *CodeDescription
-	Message        string
-	Data           interface{}
-}
-
-func (e *CustomError) Error() *CustomError {
-	var result *CustomError
-
-	result.HttpStatusCode = e.HttpStatusCode
-	result.CodeDesc = e.CodeDesc
-	result.CodeDesc.Message = e.CodeDesc.Message + e.Message
-
-	return result
 }
 
 var SUCCESS = CodeDescription{
@@ -95,12 +78,6 @@ var INVALID_PARAMETERS = CodeDescription{
 	Message:        "입력 정보가 올바르지 않습니다.▸ ",
 }
 
-var NOT_REGISTERED_QRCODE = CodeDescription{
-	HttpStatusCode: 400,
-	Code:           "NOT_REGISTERED_QRCODE",
-	Message:        "QR 코드가 등록되지 않았습니다.",
-}
-
 var INVALID_OTP = CodeDescription{
 	HttpStatusCode: 400,
 	Code:           "INVALID_OTP",
@@ -141,6 +118,12 @@ var NOT_FOUND_ERROR = CodeDescription{
 	HttpStatusCode: 404,
 	Code:           "NOT_FOUND_ERROR",
 	Message:        "존재하지 않는 정보입니다.▸ ",
+}
+
+var DUPLICATED_KEY = CodeDescription{
+	HttpStatusCode: 409,
+	Code:           "DUPLICATED_KEY",
+	Message:        "중복된 요청입니다.",
 }
 
 var TOO_MANY_REQUEST = CodeDescription{

@@ -1,9 +1,12 @@
 package rest
 
-import "reflect"
+import (
+	"reflect"
+
+	"github.com/kkodecaffeine/go-common/errorcode"
+)
 
 type ApiResponse struct {
-	Success bool        `json:"success"`
 	Code    string      `json:"code"`
 	Message string      `json:"message,omitempty"`
 	Data    interface{} `json:"data"`
@@ -11,13 +14,13 @@ type ApiResponse struct {
 
 // Constructor
 func NewApiResponse() *ApiResponse {
-	res := &ApiResponse{true, SUCCESS.Code, SUCCESS.Message, nil}
+	res := &ApiResponse{errorcode.SUCCESS.Code, errorcode.SUCCESS.Message, nil}
+
 	return res
 }
 
 func (res *ApiResponse) Succeed(message string, data interface{}) *ApiResponse {
-	const isSuccess = true
-	r := reflect.ValueOf(&SUCCESS)
+	r := reflect.ValueOf(&errorcode.SUCCESS)
 	successCode := reflect.Indirect(r).FieldByName("Code")
 	resultMessage := reflect.Indirect(r).FieldByName("Message")
 
@@ -27,16 +30,14 @@ func (res *ApiResponse) Succeed(message string, data interface{}) *ApiResponse {
 		res.Message = message
 	}
 
-	res.Success = isSuccess
 	res.Code = successCode.String()
 	res.Data = data
 
 	return res
 }
 
-func (res *ApiResponse) Error(codeDesc *CodeDescription, message string, data interface{}) *ApiResponse {
-	const isSuccess = false
-	r := reflect.ValueOf(&FAILED_INTERNAL_ERROR)
+func (res *ApiResponse) Error(codeDesc *errorcode.CodeDescription, message string, data interface{}) *ApiResponse {
+	r := reflect.ValueOf(&errorcode.FAILED_INTERNAL_ERROR)
 	errorCode := reflect.Indirect(r).FieldByName("Code")
 	resultMessage := reflect.Indirect(r).FieldByName("Message")
 
@@ -48,8 +49,24 @@ func (res *ApiResponse) Error(codeDesc *CodeDescription, message string, data in
 		res.Message = resultMessage.String()
 	}
 
-	res.Success = isSuccess
 	res.Data = data
 
 	return res
+}
+
+type CustomError struct {
+	HttpStatusCode int
+	CodeDesc       *errorcode.CodeDescription
+	Message        string
+	Data           interface{}
+}
+
+func (e *CustomError) Error() *CustomError {
+	var result *CustomError
+
+	result.HttpStatusCode = e.HttpStatusCode
+	result.CodeDesc = e.CodeDesc
+	result.CodeDesc.Message = e.CodeDesc.Message + e.Message
+
+	return result
 }
