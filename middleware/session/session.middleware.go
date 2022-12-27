@@ -19,10 +19,14 @@ func (s session) isExpired() bool {
 	return s.expiry.Before(time.Now())
 }
 
-func (store *cookie.Store) ValidateSession(c *gin.Context) {
+type Store struct {
+	store cookie.Store
+}
+
+func (store Store) ValidateSession(c *gin.Context) {
 	response := rest.NewApiResponse()
 
-	sessionID, _ := store.Get(c.Request, "session")
+	sessionID, _ := store.store.Get(c.Request, "session")
 
 	if sessionID == nil {
 		response.Error(&errorcode.ACCESS_DENIED, "", nil)
