@@ -3,8 +3,8 @@ package session
 import (
 	"time"
 
-	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+	"github.com/gorilla/sessions"
 	"github.com/kkodecaffeine/go-common/errorcode"
 	"github.com/kkodecaffeine/go-common/rest"
 )
@@ -22,23 +22,24 @@ func (s session) isExpired() bool {
 func ValidateSession(c *gin.Context) {
 	response := rest.NewApiResponse()
 
-	session := sessions.Default(c)
-	sessionID := session.Get("session_id")
+	var store = sessions.NewCookieStore([]byte("secret"))
+	sessionID, _ := store.Get(c.Request, "session_id")
 
 	if sessionID == nil {
 		response.Error(&errorcode.ACCESS_DENIED, "", nil)
 		c.JSON(errorcode.ACCESS_DENIED.HttpStatusCode, response)
+		return
+	}
 
-		userSession, exists := sessionmap[sessionID.(string)]
-		if !exists {
-			c.JSON(errorcode.ACCESS_DENIED.HttpStatusCode, response)
-			return
-		}
+	userSession, exists := sessionmap[sessionID.Name()]
+	if !exists {
+		c.JSON(errorcode.ACCESS_DENIED.HttpStatusCode, response)
+		return
+	}
 
-		if userSession.isExpired() {
-			delete(sessionmap, sessionID.(string))
-			c.JSON(errorcode.ACCESS_DENIED.HttpStatusCode, response)
-			return
-		}
+	if userSession.isExpired() {
+		delete(sessionmap, sessionID.ID)
+		c.JSON(errorcode.ACCESS_DENIED.HttpStatusCode, response)
+		return
 	}
 }
