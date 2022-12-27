@@ -9,7 +9,10 @@ require (
 	github.com/kkodecaffeine/go-common/rest v0.0.0-20221227150725-989ff151ead7
 )
 
+require github.com/gorilla/context v1.1.1 // indirect
+
 require (
+	github.com/gin-contrib/sessions v0.0.5
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
 	github.com/go-playground/universal-translator v0.17.0 // indirect
