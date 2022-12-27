@@ -38,7 +38,7 @@ func (res *ApiResponse) Succeed(message string, data interface{}) *ApiResponse {
 
 func (res *ApiResponse) Created(message string, data interface{}) *ApiResponse {
 	r := reflect.ValueOf(&errorcode.CREATED)
-	successCode := reflect.Indirect(r).FieldByName("Code")
+	createdCode := reflect.Indirect(r).FieldByName("Code")
 	resultMessage := reflect.Indirect(r).FieldByName("Message")
 
 	if len(message) == 0 {
@@ -47,7 +47,7 @@ func (res *ApiResponse) Created(message string, data interface{}) *ApiResponse {
 		res.Message = message
 	}
 
-	res.Code = successCode.String()
+	res.Code = createdCode.String()
 	res.Data = data
 
 	return res
