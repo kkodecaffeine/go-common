@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"reflect"
 	"regexp"
 
 	"github.com/go-playground/validator/v10"
@@ -14,12 +13,11 @@ func ValidateRegex(regex, value string) bool {
 	return reg.Match([]byte(value))
 }
 
-func RegexPhone(
-	v *validator.Validate, topStruct reflect.Value, currentStructOrField reflect.Value,
-	field reflect.Value, fieldType reflect.Type, fieldKind reflect.Kind, param string,
-) bool {
-	if value, ok := field.Interface().(string); ok {
-		return ValidateRegex(phoneRegex, value)
+func Phone() validator.Func {
+	return func(fl validator.FieldLevel) bool {
+		if value, ok := fl.Field().Interface().(string); ok {
+			return ValidateRegex(phoneRegex, value)
+		}
+		return true
 	}
-	return true
 }
