@@ -3,8 +3,8 @@ package session
 import (
 	"time"
 
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
-	"github.com/gorilla/sessions"
 	"github.com/kkodecaffeine/go-common/errorcode"
 	"github.com/kkodecaffeine/go-common/rest"
 )
@@ -19,7 +19,7 @@ func (s session) isExpired() bool {
 	return s.expiry.Before(time.Now())
 }
 
-func ValidateSession(c *gin.Context, store *sessions.CookieStore) {
+func (store *cookie.Store) ValidateSession(c *gin.Context) {
 	response := rest.NewApiResponse()
 
 	sessionID, _ := store.Get(c.Request, "session")
