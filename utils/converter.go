@@ -42,7 +42,9 @@ func MapToStruct(v interface{}, target interface{}) *interface{} {
 	return &target
 }
 
-// Conversion of supplied struct to a pointer via interface{}
+/**
+ * Conversion of supplied struct to a pointer via interface{}
+ */
 func MapToSructPointer(obj interface{}) interface{} {
 	vp := reflect.New(reflect.TypeOf(obj))
 	vp.Elem().Set(reflect.ValueOf(obj))
