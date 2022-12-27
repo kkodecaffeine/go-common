@@ -3,7 +3,6 @@ module github.com/kkodecaffeine/go-common/utils
 go 1.19
 
 require (
-	github.com/go-playground/validator/v10 v10.11.1
 	go.mongodb.org/mongo-driver v1.11.1
 	google.golang.org/protobuf v1.28.1
 )
