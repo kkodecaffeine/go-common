@@ -36,6 +36,23 @@ func (res *ApiResponse) Succeed(message string, data interface{}) *ApiResponse {
 	return res
 }
 
+func (res *ApiResponse) Created(message string, data interface{}) *ApiResponse {
+	r := reflect.ValueOf(&errorcode.CREATED)
+	successCode := reflect.Indirect(r).FieldByName("Code")
+	resultMessage := reflect.Indirect(r).FieldByName("Message")
+
+	if len(message) == 0 {
+		res.Message = resultMessage.String()
+	} else {
+		res.Message = message
+	}
+
+	res.Code = successCode.String()
+	res.Data = data
+
+	return res
+}
+
 func (res *ApiResponse) Error(codeDesc *errorcode.CodeDescription, message string, data interface{}) *ApiResponse {
 	r := reflect.ValueOf(&errorcode.FAILED_INTERNAL_ERROR)
 	errorCode := reflect.Indirect(r).FieldByName("Code")
