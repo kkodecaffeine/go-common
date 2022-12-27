@@ -19,10 +19,9 @@ func (s session) isExpired() bool {
 	return s.expiry.Before(time.Now())
 }
 
-func ValidateSession(c *gin.Context) {
+func ValidateSession(c *gin.Context, store *sessions.CookieStore) {
 	response := rest.NewApiResponse()
 
-	var store = sessions.NewCookieStore([]byte("secret"))
 	sessionID, _ := store.Get(c.Request, "session")
 
 	if sessionID == nil {
