@@ -23,7 +23,7 @@ func ValidateSession(c *gin.Context) {
 	response := rest.NewApiResponse()
 
 	var store = sessions.NewCookieStore([]byte("secret"))
-	sessionID, _ := store.Get(c.Request, "session_id")
+	sessionID, _ := store.Get(c.Request, "session")
 
 	if sessionID == nil {
 		response.Error(&errorcode.ACCESS_DENIED, "", nil)
