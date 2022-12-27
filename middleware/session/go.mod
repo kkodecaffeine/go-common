@@ -6,6 +6,7 @@ require (
 	github.com/gin-contrib/sessions v0.0.5
 	github.com/gin-gonic/gin v1.7.4
 	github.com/kkodecaffeine/go-common/errorcode v0.0.0-20221227125236-2e606752e0f9
+	github.com/kkodecaffeine/go-common/rest v0.0.0-20221227150725-989ff151ead7
 )
 
 require (
@@ -18,7 +19,6 @@ require (
 	github.com/gorilla/securecookie v1.1.1 // indirect
 	github.com/gorilla/sessions v1.2.1 // indirect
 	github.com/json-iterator/go v1.1.9 // indirect
-	github.com/kkodecaffeine/go-common/rest v0.0.0-20221227150725-989ff151ead7 // indirect
 	github.com/leodido/go-urn v1.2.0 // indirect
 	github.com/mattn/go-isatty v0.0.12 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421 // indirect
