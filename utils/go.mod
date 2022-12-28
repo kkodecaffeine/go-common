@@ -3,6 +3,7 @@ module github.com/kkodecaffeine/go-common/utils
 go 1.19
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.8.2
 	go.mongodb.org/mongo-driver v1.11.1
 	google.golang.org/protobuf v1.28.1
@@ -27,5 +28,3 @@ require (
 	golang.org/x/text v0.5.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
-
-require github.com/dgrijalva/jwt-go v3.2.0+incompatible
