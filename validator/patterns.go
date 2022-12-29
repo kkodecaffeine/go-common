@@ -14,9 +14,6 @@ func validateRegex(regex, value string) bool {
 	return reg.Match([]byte(value))
 }
 
-/**
- * test
- */
 func RegexEmail() validator.Func {
 	return func(fl validator.FieldLevel) bool {
 		if value, ok := fl.Field().Interface().(string); ok {
