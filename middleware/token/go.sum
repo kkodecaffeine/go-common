@@ -28,8 +28,6 @@ github.com/json-iterator/go v1.1.12 h1:PV8peI4a0ysnczrg+LtxykD8LfKY9ML6u2jnxaEnr
 github.com/json-iterator/go v1.1.12/go.mod h1:e30LSqwooZae/UwlEbR2852Gd8hjQvJoHmT4TnhNGBo=
 github.com/kkodecaffeine/go-common/errorcode v0.0.0-20221228122235-52cddb203957 h1:NdMKibmWEU9NPeG6inKdpJONMuD8tq8dHU8t6TSTkxU=
 github.com/kkodecaffeine/go-common/errorcode v0.0.0-20221228122235-52cddb203957/go.mod h1:59FWG0DlCUJRREAicdfM7XMJBp49ysiZEyT0KENFCGA=
-github.com/kkodecaffeine/go-common/rest v0.0.0-20221228122235-52cddb203957 h1:QlJE8DRtoXLLCK9u4W+s3aK5ISWVXfMLufZgQA+K7QE=
-github.com/kkodecaffeine/go-common/rest v0.0.0-20221228122235-52cddb203957/go.mod h1:zqiEyfvXXpVLzqrqLArrTOouf3y0k6L7RZUarlZ5kw4=
 github.com/kkodecaffeine/go-common/rest v0.0.0-20221229001945-ea7fde78d082 h1:r+YQuXWdmSjCjHUon7AqT9W6nAJhrLzzqrPHLHS+3vo=
 github.com/kkodecaffeine/go-common/rest v0.0.0-20221229001945-ea7fde78d082/go.mod h1:zqiEyfvXXpVLzqrqLArrTOouf3y0k6L7RZUarlZ5kw4=
 github.com/kkodecaffeine/go-common/utils v0.0.0-20221228122235-52cddb203957 h1:Ns98fKs5ytwHXn8v3lX1XKqnWthwlOrjwka+23K5K0M=
