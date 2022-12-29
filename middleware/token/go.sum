@@ -30,6 +30,8 @@ github.com/kkodecaffeine/go-common/errorcode v0.0.0-20221228122235-52cddb203957 
 github.com/kkodecaffeine/go-common/errorcode v0.0.0-20221228122235-52cddb203957/go.mod h1:59FWG0DlCUJRREAicdfM7XMJBp49ysiZEyT0KENFCGA=
 github.com/kkodecaffeine/go-common/rest v0.0.0-20221228122235-52cddb203957 h1:QlJE8DRtoXLLCK9u4W+s3aK5ISWVXfMLufZgQA+K7QE=
 github.com/kkodecaffeine/go-common/rest v0.0.0-20221228122235-52cddb203957/go.mod h1:zqiEyfvXXpVLzqrqLArrTOouf3y0k6L7RZUarlZ5kw4=
+github.com/kkodecaffeine/go-common/rest v0.0.0-20221229001945-ea7fde78d082 h1:r+YQuXWdmSjCjHUon7AqT9W6nAJhrLzzqrPHLHS+3vo=
+github.com/kkodecaffeine/go-common/rest v0.0.0-20221229001945-ea7fde78d082/go.mod h1:zqiEyfvXXpVLzqrqLArrTOouf3y0k6L7RZUarlZ5kw4=
 github.com/kkodecaffeine/go-common/utils v0.0.0-20221228122235-52cddb203957 h1:Ns98fKs5ytwHXn8v3lX1XKqnWthwlOrjwka+23K5K0M=
 github.com/kkodecaffeine/go-common/utils v0.0.0-20221228122235-52cddb203957/go.mod h1:HTGQ6NIIxxN02VCbq7XTZtPuRV4qUwiwzV+ZVBHA4s4=
 github.com/klauspost/compress v1.13.6/go.mod h1:/3/Vjq9QcHkK5uEr5lBEmyoZ1iFhe47etQ6QUkpK6sk=

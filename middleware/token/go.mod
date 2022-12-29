@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/gin-gonic/gin v1.8.2
 	github.com/kkodecaffeine/go-common/errorcode v0.0.0-20221228122235-52cddb203957
-	github.com/kkodecaffeine/go-common/rest v0.0.0-20221228122235-52cddb203957
+	github.com/kkodecaffeine/go-common/rest v0.0.0-20221229001945-ea7fde78d082
 	github.com/kkodecaffeine/go-common/utils v0.0.0-20221228122235-52cddb203957
 )
 
