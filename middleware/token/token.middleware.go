@@ -13,8 +13,10 @@ func JwtAuthMiddleware() gin.HandlerFunc {
 		if err != nil {
 			response := rest.NewApiResponse()
 			response.Error(&errorcode.ACCESS_DENIED, "unauthorized", nil)
+
 			c.JSON(errorcode.ACCESS_DENIED.HttpStatusCode, response)
 			c.Abort()
+
 			return
 		}
 		c.Next()
